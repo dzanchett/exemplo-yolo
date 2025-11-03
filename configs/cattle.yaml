@@ -1,0 +1,26 @@
+# YOLO dataset configuration file for cattle detection/counting.
+#
+# This file follows the Ultralytics/YOLO format.  Update the relative paths
+# according to where you stored your annotated dataset.  The suggested layout is:
+#
+# data/
+# ??? cattle/
+#     ??? train/
+#     ?   ??? images/
+#     ?   ??? labels/
+#     ??? val/
+#     ?   ??? images/
+#     ?   ??? labels/
+#     ??? test/
+#         ??? images/
+#         ??? labels/
+
+path: ../data/cattle
+train: train/images
+val: val/images
+test: test/images
+
+# Class dictionary.  If your dataset uses a different label name, update the list
+# below accordingly.
+names:
+  0: cow
