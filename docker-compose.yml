@@ -1,0 +1,51 @@
+# Docker Compose para Projeto de Detecção de Gado
+# ================================================
+# Este arquivo facilita a execução do container Docker
+
+version: '3.8'
+
+services:
+  cattle-detector:
+    # Nome do serviço
+    container_name: yolo-cattle-detector
+    
+    # Constrói a imagem a partir do Dockerfile local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    # Nome da imagem que será criada
+    image: cattle-detector:latest
+    
+    # Volumes: mapeia diretórios do host para o container
+    # Formato: host_path:container_path
+    volumes:
+      # Mapeia o diretório de imagens
+      - ./images:/workspace/images:ro  # :ro = read-only (somente leitura)
+      
+      # Mapeia o diretório de saída
+      - ./output:/workspace/output:rw  # :rw = read-write (leitura e escrita)
+      
+      # Mapeia o script (útil para desenvolvimento/debugging)
+      - ./detect_cattle.py:/app/detect_cattle.py:ro
+    
+    # Variáveis de ambiente (opcionais)
+    environment:
+      - PYTHONUNBUFFERED=1
+    
+    # Recursos (opcional - limita CPU e memória)
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '2.0'
+    #       memory: 4G
+    #     reservations:
+    #       cpus: '1.0'
+    #       memory: 2G
+    
+    # Política de restart
+    restart: "no"  # Não reinicia automaticamente após término
+    
+    # stdin_open e tty para permitir interação (se necessário)
+    stdin_open: false
+    tty: false

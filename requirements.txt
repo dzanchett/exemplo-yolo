@@ -1,0 +1,30 @@
+# Dependências do Projeto de Detecção de Gado
+# =============================================
+
+# Framework YOLOv8 da Ultralytics
+# É a biblioteca principal para detecção de objetos
+ultralytics==8.0.220
+
+# OpenCV para processamento de imagens
+# Usado para ler, manipular e salvar imagens
+opencv-python==4.8.1.78
+
+# NumPy para operações numéricas
+# Dependência do OpenCV e manipulação de arrays
+numpy==1.24.3
+
+# Pillow para suporte adicional a imagens
+# Compatibilidade com diversos formatos de imagem
+Pillow==10.1.0
+
+# PyTorch (instalado automaticamente pelo ultralytics)
+# Motor de deep learning usado pelo YOLO
+# torch>=2.0.0
+# torchvision>=0.15.0
+
+# Outras dependências úteis
+# matplotlib para visualizações (opcional)
+matplotlib==3.8.2
+
+# pandas para análise de dados (opcional)
+pandas==2.1.3
